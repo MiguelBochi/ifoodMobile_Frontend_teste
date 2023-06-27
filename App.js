@@ -40,22 +40,30 @@ export default function App() {
     },
   ];
 
+  type ItemProps = { nome: string };
+
+  const Item = ({ nome }: ItemProps) => (
+    <View>
+      <Text>{nome}</Text>
+    </View>
+  );
   return (
-    <View style={styles.container}>
-      < Header />
-      <ScrollView>
-        
-        <FlatList data={comidas} renderItem={({item}) => <Text>{props.comidas.nome}</Text> } />
-      </ScrollView>
+    <View>
+      <Header />
+      <View style={styles.container}>
+        <FlatList
+          data={comidas}
+          renderItem={({ item }) => <Item nome={item.nome} />}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "Coral",
   },
 });
